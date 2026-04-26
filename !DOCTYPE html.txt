@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wedding Invitation</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5efe6;
+  overflow: hidden;
+}
+
+/* Envelope */
+.envelope {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  background: #c8a97e;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #b08968;
+  transform-origin: top;
+  animation: openFlap 2s forwards;
+}
+
+@keyframes openFlap {
+  0% { transform: rotateX(0); }
+  100% { transform: rotateX(-180deg); }
+}
+
+/* Slider */
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  transition: transform 1s ease;
+  opacity: 0;
+  animation: showSlider 1s 2s forwards;
+}
+
+@keyframes showSlider {
+  to { opacity: 1; }
+}
+
+.slide {
+  min-width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Slides */
+.slide1 { background: linear-gradient(#1d3557, #457b9d); color: white; display:flex; align-items:center; justify-content:center; font-size:30px;}
+.slide2 { background: url('YOUR_IMAGE_HERE.jpg') center/cover no-repeat; }
+.slide3 { background: url('https://images.unsplash.com/photo-1520857014576-2c4f4c972b57') center/cover; }
+.slide4 { background: url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover; }
+.slide5 { background: url('https://images.unsplash.com/photo-1504198453319-5ce911bafcde') center/cover; }
+.slide6 { background: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') center/cover; }
+.slide7 { background: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc') center/cover; }
+.slide8 { background: url('https://images.unsplash.com/photo-1505236858219-8359eb29e329') center/cover; }
+.slide9 { background: linear-gradient(#6a994e, #386641); color:white; display:flex; align-items:center; justify-content:center; font-size:25px;}
+
+.text {
+  background: rgba(0,0,0,0.4);
+  padding: 20px;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope">
+  <div class="flap"></div>
+</div>
+
+<div class="slider" id="slider">
+  <div class="slide slide1"><div class="text">You're Invited 💍</div></div>
+  <div class="slide slide2"></div>
+  <div class="slide slide3"></div>
+  <div class="slide slide4"></div>
+  <div class="slide slide5"></div>
+  <div class="slide slide6"></div>
+  <div class="slide slide7"></div>
+  <div class="slide slide8"></div>
+  <div class="slide slide9"><div class="text">See You There ❤️</div></div>
+</div>
+
+<script>
+let index = 0;
+const slider = document.getElementById("slider");
+
+setInterval(() => {
+  index++;
+  if(index > 8) index = 0;
+  slider.style.transform = `translateX(-${index * 100}%)`;
+}, 3000);
+</script>
+
+</body>
+</html>
